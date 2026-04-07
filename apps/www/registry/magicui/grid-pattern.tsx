@@ -24,6 +24,20 @@ export function GridPattern({
   ...props
 }: GridPatternProps) {
   const id = useId()
+  const uniqueSquares: Array<[x: number, y: number]> = []
+
+  if (squares) {
+    const seenSquares = new Set<string>()
+
+    for (const [squareX, squareY] of squares) {
+      const squareKey = `${squareX}-${squareY}`
+
+      if (!seenSquares.has(squareKey)) {
+        seenSquares.add(squareKey)
+        uniqueSquares.push([squareX, squareY])
+      }
+    }
+  }
 
   return (
     <svg
@@ -51,9 +65,9 @@ export function GridPattern({
         </pattern>
       </defs>
       <rect width="100%" height="100%" strokeWidth={0} fill={`url(#${id})`} />
-      {squares && (
+      {uniqueSquares.length > 0 && (
         <svg x={x} y={y} className="overflow-visible">
-          {squares.map(([x, y]) => (
+          {uniqueSquares.map(([x, y]) => (
             <rect
               strokeWidth="0"
               key={`${x}-${y}`}
