@@ -17,9 +17,9 @@ export default function GridPatternDemo() {
           [12, 15],
           [15, 10],
           [10, 15],
-          [15, 10],
-          [10, 15],
-          [15, 10],
+          [16, 12],
+          [12, 16],
+          [17, 8],
         ]}
         className={cn(
           "[mask-image:radial-gradient(400px_circle_at_center,white,transparent)]",

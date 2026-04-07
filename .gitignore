@@ -44,6 +44,3 @@ next-env.d.ts
 
 # turbo cache
 .turbo
-
-# local MCP artifacts
-.playwright-mcp/
